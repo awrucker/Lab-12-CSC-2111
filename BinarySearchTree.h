@@ -7,6 +7,8 @@
 #include "Line.h"
 #include "Drawable.h"
 using CSC2110::String;
+#include <iostream>
+using namespace std;
 
 template < class T >
 class BinarySearchTree : public Drawable
@@ -128,16 +130,19 @@ BinarySearchTree<T>* BinarySearchTree<T>::minimize()
 template < class T >
 void BinarySearchTree<T>::minimize(T** items, int first, int last)
 {
-   //DO THIS (recursive minimize method)
+
    if(first == last)
    {
 	   insert(items[first]);
-	   return;
+		return;
    }
-   int mid = (last-first)/2;
-   insert(items[mid]);
-   minimize(items, first, mid-1);
-   minimize(items, mid+1, last);
+   if(first < last)
+   {
+	   int mid = first+(int)((1.0*(last-first))/2.0);
+	   insert(items[mid]);
+	   minimize(items, first, mid-1);
+	   minimize(items, mid+1, last);
+   }
 }
 
 template < class T >
@@ -182,15 +187,14 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
    {
       //the rounding ensures that mid is included in the count (it is necessary)
       int mid = (int) ((last + first)/2.0 + 0.5);
-
       //start at mid and gradually move to the right to find the next element to insert into the tree
       //if first and last are the same, mid automatically succeeds (leaf element)
       if (first < last)
       {
          //initial log computations using mid
-         double k_left =   log((mid-first)/1.0)*log_factor;                 //log base 2 of the number of items to the left of mid (including mid)
+         double k_left =   log((mid-first+1)/1.0)*log_factor;//log base 2 of the number of items to the left of mid (including mid)
          double int_k_left =   (int)(k_left+.5);             //same as above but rounded
-         double k_right = log((last-mid)/1.0)*log_factor;
+         double k_right = log((last-mid+1)/1.0)*log_factor;
          double int_k_right = (int)(k_right+0.5);
 
          //keep searching for spot where the number of elements to the left of mid is 2^k - 1 (a full tree)
@@ -203,9 +207,9 @@ void BinarySearchTree<T>::minimizeComplete(T** items, int first, int last)
             mid++;
             //DO THIS
             //try again with mid shifted one to the right
-			k_left =   log((mid-first)/1.0)*log_factor;                 //log base 2 of the number of items to the left of mid (including mid)
+			k_left =   log((mid-first+1)/1.0)*log_factor;                 //log base 2 of the number of items to the left of mid (including mid)
 			int_k_left =   (int)(k_left+.5);             //same as above but rounded
-			k_right = log((last-mid)/1.0)*log_factor;
+			k_right = log((last-mid+1)/1.0)*log_factor;
 			int_k_right = (int)(k_right+0.5);
 
 
