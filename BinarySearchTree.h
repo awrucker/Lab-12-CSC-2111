@@ -129,11 +129,15 @@ template < class T >
 void BinarySearchTree<T>::minimize(T** items, int first, int last)
 {
    //DO THIS (recursive minimize method)
-
-
-
-
-
+   if(first == last)
+   {
+	   insertItem(items[first]);
+	   return;
+   }
+   int mid = (last-first)/2;
+   insertItem(items[mid]);
+   minimize(items, first, mid-1);
+   minimize(items, mid+1, last);
 }
 
 template < class T >
