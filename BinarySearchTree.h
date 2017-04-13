@@ -164,7 +164,9 @@ BinarySearchTree<T>* BinarySearchTree<T>::minimizeComplete()
    T** items = toArray();
    BinarySearchTree<T>* bst = new BinarySearchTree<T>(compare_items, compare_keys);
    //DO THIS
+   bst->minimizeComplete(items, 0, sze- 1);
 
+   return bst;
 
 }
 
