@@ -1,3 +1,8 @@
+/*
+	Layne Earnheart & Adam Rucker
+	4/13/2017
+	Lab 12/ Minimum height binary search tree
+*/	
 #include "BinarySearchTree.h"
 #include "BinaryTreeIterator.h"
 #include "ListArray.h"

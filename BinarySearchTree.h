@@ -1,3 +1,8 @@
+/*
+	Layne Earnheart & Adam Rucker
+	4/13/2017
+	Lab 12/ Minimum height binary search tree
+*/	
 #if !defined (BINARYSEARCHTREE_H)
 #define BINARYSEARCHTREE_H
 
@@ -66,14 +71,20 @@ class BinarySearchTree : public Drawable
       BinarySearchTree<T>* minimizeComplete();
 
 };
-
+/*
+	Pre:
+	Post: returns the max height root to leaf
+*/	
 template < class T >
 int BinarySearchTree<T>::getHeight()
 {
    //DO THIS
    return getHeight(getRootNode());
 }
-
+/*
+	Pre: Receives a TreeNode
+	Post: returns teh max distance from tNode to leaf + 1	
+*/	
 template < class T >
 int BinarySearchTree<T>::getHeight(TreeNode<T>* tNode)
 {
@@ -87,14 +98,20 @@ int BinarySearchTree<T>::getHeight(TreeNode<T>* tNode)
    else
 	   return rh + 1;
 }
-
+/*	
+	Pre:
+	Post: returns whether the entire tree is balanced
+*/
 template < class T >
 bool BinarySearchTree<T>::isBalanced()
 {
    //DO THIS
    return isBalanced(getRootNode());
 }
-
+/*
+	Pre: Receives a tNode
+	Post: returns whether the subtrees under tNode are balanced and if tNode is balanced
+*/
 template < class T >
 bool BinarySearchTree<T>::isBalanced(TreeNode<T>* tNode)
 {
@@ -116,7 +133,10 @@ bool BinarySearchTree<T>::isBalanced(TreeNode<T>* tNode)
    else
 	   return false;
 }
-
+/*
+	Pre:
+	Post:Returns a minimum height binary search tree
+*/
 template < class T >
 BinarySearchTree<T>* BinarySearchTree<T>::minimize()
 {
@@ -126,7 +146,10 @@ BinarySearchTree<T>* BinarySearchTree<T>::minimize()
    bst->minimize(items, 0, sze-1);
    return bst;
 }
-
+/*
+	Pre: Receives an array of items and a first and last index
+	Post: Creates a complete binary search tree
+*/
 template < class T >
 void BinarySearchTree<T>::minimize(T** items, int first, int last)
 {

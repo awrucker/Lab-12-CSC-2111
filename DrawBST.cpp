@@ -1,3 +1,9 @@
+/*
+	Layne Earnheart & Adam Rucker
+	4/13/2017
+	Lab 12/ Minimum height binary search tree
+*/	
+//to get it to draw the complete tree uncomment line 57 and comment line 58
 #include "wx/wx.h"
 #include "wx/sizer.h"
 
@@ -48,8 +54,8 @@ ListArray<CD>* cds = CD::readCDs("cds.txt");
    delete iter;
    delete cds;
 
-   BinarySearchTree<CD>* min = bst->minimizeComplete();
-  // BinarySearchTree<CD>* min = bst->minimize();
+   //BinarySearchTree<CD>* min = bst->minimizeComplete();
+   BinarySearchTree<CD>* min = bst->minimize();
    delete bst;
    bst = min;
 
